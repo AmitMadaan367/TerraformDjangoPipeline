@@ -1,3 +1,4 @@
+# role for code build
 resource "aws_iam_role" "djangobuild" {
   name = "djangobuild"
 
@@ -17,6 +18,8 @@ resource "aws_iam_role" "djangobuild" {
 EOF
 }
 
+
+# policy for code build role
 resource "aws_iam_role_policy" "djangobuild" {
   role = aws_iam_role.djangobuild.name
 
@@ -57,7 +60,7 @@ EOF
 }
 
 
-
+#cloud watch policy for code build
 
 resource "aws_iam_role_policy" "djangobuildpolicy2" {
   role = aws_iam_role.djangobuild.name
@@ -156,7 +159,7 @@ POLICY
 
 
 
-
+#code for code deploy project
 
 resource "aws_codebuild_project" "djangobuild" {
   name          = "djangobuild-project"

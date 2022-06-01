@@ -31,7 +31,7 @@ variable "owner" {
 variable "github_token" {
   type        = string
   description = "Github OAuth token"
-   default     = "token"
+   default     = "Token"
 }
 
 variable "github_repo" {
@@ -48,7 +48,7 @@ variable "github_owner" {
 }
 
 
-variable "branch" {
+variable "branch" { 
   type        = string
   description = "branch name"
   default="main"

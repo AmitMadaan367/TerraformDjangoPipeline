@@ -1,3 +1,5 @@
+#role for code pipeline
+
 resource "aws_iam_role" "codepipeline_role2" {
   name                 = "${var.app_name}-codepipeline-role"
   assume_role_policy   = <<EOF
@@ -18,7 +20,7 @@ EOF
  
 }
 
-
+#policy to provide s3 bucket access
 resource "aws_iam_role_policy" "codepipeline_policy" {
   name = "${var.app_name}-codepipeline_policy"
   role = aws_iam_role.codepipeline_role2.id
@@ -54,6 +56,7 @@ EOF
 }
 
 
+#policy to provide ec2 access to codepipeline
 
 resource "aws_iam_policy" "codepipeline_policyEC2" {
   name = "${var.app_name}-codepipeline_policyEC2"
@@ -90,6 +93,7 @@ EOF
 
 
 
+# code attach policy to the pipline role
 
 resource "aws_iam_policy_attachment" "test-attach" {
   name       = "test-attachment"
@@ -98,10 +102,11 @@ resource "aws_iam_policy_attachment" "test-attach" {
 }
 
 
-resource "aws_iam_instance_profile" "ec2_profile" {
-  name  = "ec2_profile"
-  role = aws_iam_role.ec2role.name
-}
+
+
+
+#role for ec2 instance
+
 resource "aws_iam_role" "ec2role" {
   name = "test_role"
   path = "/"
@@ -125,7 +130,7 @@ EOF
 
 
 
-
+#code deploy policy for ec2 instance
 resource "aws_iam_role_policy" "codepipeline_policyForEc2" {
   name = "${var.app_name}-codepipeline_policyForEc2"
   role = aws_iam_role.ec2role.id
@@ -158,4 +163,12 @@ resource "aws_iam_role_policy" "codepipeline_policyForEc2" {
   ]
 }
 EOF
+}
+
+
+
+# creating profile for ec2 and attach the above role
+resource "aws_iam_instance_profile" "ec2_profile" {
+  name  = "ec2_profile"
+  role = aws_iam_role.ec2role.name
 }

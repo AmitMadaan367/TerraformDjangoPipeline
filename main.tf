@@ -1,3 +1,5 @@
+#vpc setup code
+
 resource "aws_vpc" "dev" {
   cidr_block       = "10.0.0.0/16"
   instance_tenancy = "default"
@@ -112,6 +114,7 @@ resource "aws_s3_bucket_acl" "mycodepipeline_acl" {
 }
 
 
+#ec2 setup code with code deploy agent installation
 
 resource "aws_instance" "PublicMachine" {
   ami           = "ami-0eea504f45ef7a8f7"

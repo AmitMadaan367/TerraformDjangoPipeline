@@ -1,3 +1,4 @@
+# webhot for github
 resource "aws_codestarconnections_connection" "gitwebhook" {
   name          = "gitwebhook"
   provider_type = "GitHub"
@@ -5,7 +6,7 @@ resource "aws_codestarconnections_connection" "gitwebhook" {
 
 
 
-
+# code for pipeine
 resource "aws_codepipeline" "djangoCodePipeline" {
   name = "djangoCodePipeline"
   role_arn = aws_iam_role.codepipeline_role2.arn
