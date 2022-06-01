@@ -1,4 +1,4 @@
-#**AWS Code Pipeline to deploy code from github to ec2 with terraform.
+#**AWS Code Pipeline to deploy code from github to ec2 with terraform.**
 
 ## All the steps are in the separate file like code build, code deploy pipeline and policies.
 
