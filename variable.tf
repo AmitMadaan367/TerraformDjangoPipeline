@@ -31,7 +31,7 @@ variable "owner" {
 variable "github_token" {
   type        = string
   description = "Github OAuth token"
-   default     = ""
+   default     = "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"
 }
 
 variable "github_repo" {

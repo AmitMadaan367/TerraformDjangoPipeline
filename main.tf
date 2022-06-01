@@ -95,8 +95,14 @@ resource "aws_s3_bucket" "mycodepipeline2" {
     Environment = "My-Dev"
   }
 
-  versioning{
-  enabled=true
+}
+
+
+resource "aws_s3_bucket_versioning" "public_bucket_versioning" {
+  bucket = aws_s3_bucket.mycodepipeline2.id 
+
+  versioning_configuration {
+    status =   "Enabled"
   }
 }
 
